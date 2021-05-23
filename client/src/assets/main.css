@@ -1,0 +1,17 @@
+body {
+    background: rgb(146, 190, 255);
+    margin: 0;
+    padding: 0;
+}
+
+.btn,
+button {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
