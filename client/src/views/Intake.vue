@@ -224,7 +224,7 @@ export default {
       this.class3 = "";
       this.employee = "";
       this.hasWaiver = "";
-      console.log("delete");
+      console.log("reset");
     },
     async login() {
       await axios.get("");
@@ -248,9 +248,11 @@ export default {
           class3: this.class3,
           employee: this.employee,
           hasWaiver: this.hasWaiver,
+          today: this.date,
         },
       });
       this.reset();
+      console.log(this.date);
     },
   },
 };
@@ -341,5 +343,8 @@ p {
 }
 select {
   cursor: pointer;
+}
+.btn {
+  margin-bottom: 1em;
 }
 </style>

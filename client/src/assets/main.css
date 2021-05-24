@@ -15,3 +15,7 @@ button {
     align-items: center;
     flex-direction: row;
 }
+
+.left {
+    float: left;
+}

@@ -35,7 +35,7 @@ app.get('/jwt', (req, res) => {
 })
 
 app.post('/intakeForm', (req, res) => {
-    const sql = 'INSERT INTO survivors (fname, lname, email, age, github, injuryDate, injuryType, accidentAge, typeOfDev, class1, class2, class3, hasWaiver, employee) VALUES ("' + req.body.data.fname + '","' + req.body.data.lname + '","' + req.body.data.email + '","' + req.body.data.age + '","' + req.body.data.github + '","' + req.body.data.injuryDate + '","' + req.body.data.injuryType + '","' + req.body.data.accidentAge + '","' + req.body.data.typeOfDev + '","' + req.body.data.class1 + '","' + req.body.data.class2 + '","' + req.body.data.class3 + '","' + req.body.data.hasWaiver + '","' + req.body.data.employee + '");'
+    const sql = 'INSERT INTO survivors (fname, lname, email, age, github, injuryDate, injuryType, accidentAge, typeOfDev, class1, class2, class3, hasWaiver, employee, today) VALUES ("' + req.body.data.fname + '","' + req.body.data.lname + '","' + req.body.data.email + '","' + req.body.data.age + '","' + req.body.data.github + '","' + req.body.data.injuryDate + '","' + req.body.data.injuryType + '","' + req.body.data.accidentAge + '","' + req.body.data.typeOfDev + '","' + req.body.data.class1 + '","' + req.body.data.class2 + '","' + req.body.data.class3 + '","' + req.body.data.hasWaiver + '","' + req.body.data.employee + '","' + req.body.data.today + '");'
     survivors.query(sql, (err, results) => {
         if (err) {
             console.log(sql)
@@ -44,6 +44,13 @@ app.post('/intakeForm', (req, res) => {
         console.log(results)
     })
     console.log('Form submitted')
+})
+
+app.get('/survivors', (req, res) => {
+    survivors.query('SELECT * FROM survivors', (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
 })
 
 const server = app.listen(process.env.PORT || 8081, () => {
