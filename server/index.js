@@ -43,7 +43,12 @@ app.post('/intakeForm', (req, res) => {
         }
         console.log(results)
     })
+    res.end()
     console.log('Form submitted')
+})
+
+app.post('/delete', (req, res) => {
+    survivors.query('DELETE FROM survivors WHERE ')
 })
 
 app.get('/survivors', (req, res) => {

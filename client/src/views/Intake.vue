@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="bg">
     <form @submit.prevent="submit">
       <h1>Intake Form</h1>
       <table>
-        <p class="big">Basic Info</p>
+        <p class="big">&bull; Identification</p>
         <tr>
           <td>
             <label>Firstname</label><br /><input v-model="fname" type="text" />
@@ -42,10 +42,12 @@
             />
           </td>
           <td>
-            <label>Type of Injury</label> <br /><input
-              type="text"
-              v-model="injuryType"
-            />
+            <label>Type of Injury</label> <br />
+            <select v-model="injuryType">
+              <option>Traumatic</option>
+              <option>Non-traumatic</option>
+              <option>Other</option>
+            </select>
           </td>
           <td>
             <label>Age at Accident</label> <br /><input
@@ -55,7 +57,7 @@
           </td>
         </tr>
 
-        <p class="big">Desired Courses/Job</p>
+        <p class="big">&bull; Desired Courses/Job</p>
         <tr>
           <td>
             <label>Type of Developer</label><br />
@@ -100,53 +102,24 @@
             </select>
           </td>
           <td>
-            <label
-              >Has Brain<br />
-              Injury Waiver</label
-            ><br />
+            <label>Has BI Waiver</label><br />
             <select v-model="hasWaiver">
               <option>Yes</option>
               <option>No</option>
             </select>
           </td>
         </tr>
-        <tr>
-          <td>
-            <p class="big">Internal</p>
-          </td>
-        </tr>
+        <p class="big">&bull; Meta</p>
         <tr>
           <td>
             <label>Employee Who Filled This Out</label>
+            <br />
             <input type="text" v-model="employee" />
           </td>
         </tr>
       </table>
-      <input class="btn" type="submit" />
+      <input type="submit" />
     </form>
-    <div class="container" @click="hideModal" v-if="modal">
-      <div class="modal">
-        <div class="faint">
-          <!-- <p @click="hideModal" class="x big">X</p>
-          <div id="xText">Hide <br />this.</div> -->
-          <div class="inner">
-            <h1>New Survivor Intake Form</h1>
-            <div>
-              <p>
-                Remind the client that this information is kept private is kept
-                secure in a database. This data can only be shared with those
-                the client requests it to be shared with.
-              </p>
-              <p>
-                The Values entered for courses can be edited. Please let the
-                client know this.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- END container -->
   </div>
 </template>
 
@@ -263,9 +236,20 @@ table {
   width: 100%;
   margin: 0;
   padding: 0;
+  display: inline-grid;
+  row-gap: 1em;
 }
 td {
   padding: 1em;
+  width: 30%;
+  grid-column: auto;
+}
+tr {
+  background: #f0f0f0;
+  border: 3px solid;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
 }
 label {
   font-weight: 600;
@@ -297,11 +281,12 @@ p {
   margin-top: 5%;
   height: fit-content;
   width: 50%;
-  border: solid red;
+  border: solid rgb(54, 83, 179);
   z-index: 3;
   overflow: visible;
   position: absolute;
   background: white;
+  border-radius: 15px;
 }
 .container {
   display: flex;
@@ -323,28 +308,36 @@ p {
   margin: 1%;
   cursor: pointer;
 }
-.bg {
-  z-index: 3;
-  background: white;
-  height: 100%;
-  width: 100%;
-}
+
 .inner {
   margin: 5%;
 }
-#xText {
-  font-size: 0.25em;
-  float: left;
-  left: 0;
-  margin-top: 3%;
-}
-#ml {
-  margin-left: 0.5em;
-}
+
 select {
+  width: 10em;
   cursor: pointer;
 }
-.btn {
-  margin-bottom: 1em;
+
+.smaller {
+  width: 50%;
+}
+
+input[type="submit"] {
+  width: 80%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 2.5%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
 }
 </style>
